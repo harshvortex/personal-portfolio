@@ -1,165 +1,184 @@
 "use client"
 
-import Image from "next/image"
 import { useState, useEffect } from "react"
-import { ChevronDown, Github, Linkedin, Mail, Download, Code, Zap, Star } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Terminal, Code2, Cpu, Zap } from "lucide-react"
 
-import StaggerText from "./StaggerText"
-import AnimatedSection from "./AnimatedSection"
+const typingPhrases = [
+  "Full-Stack Developer",
+  "Problem Solver",
+  "Tech Enthusiast",
+  "Code Architect"
+]
 
 export default function Hero() {
-  const [currentRole, setCurrentRole] = useState(0)
-  const roles = ["Full-Stack Developer", "Problem Solver", "Tech Enthusiast"]
+  const [currentPhrase, setCurrentPhrase] = useState(0)
+  const [displayText, setDisplayText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [roles.length])
+    const phrase = typingPhrases[currentPhrase]
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < phrase.length) {
+          setDisplayText(phrase.slice(0, displayText.length + 1))
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1))
+        } else {
+          setIsDeleting(false)
+          setCurrentPhrase((prev) => (prev + 1) % typingPhrases.length)
+        }
+      }
+    }, isDeleting ? 50 : 100)
+
+    return () => clearTimeout(timeout)
+  }, [displayText, isDeleting, currentPhrase])
 
   return (
-    <AnimatedSection className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 md:pt-20">
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <div className="max-w-4xl mx-auto fade-in">
-          <div className="mb-8 relative inline-block">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-secondary to-accent rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse-glow"></div>
-              <Image
-                src="/placeholder.svg?height=150&width=150"
-                alt="Harshwardhan"
-                width={150}
-                height={150}
-                className="relative rounded-full mx-auto border-4 border-card shadow-2xl md:w-[180px] md:h-[180px] hover:scale-105 transition-all duration-500"
-              />
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full animate-ping"></div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
-                <Star className="w-3 h-3 text-secondary-foreground" />
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-4 md:mb-6">
-            <h1 className="text-4xl md:text-7xl font-playfair font-bold flex flex-col items-center">
-              <span className="text-foreground flex gap-2">
-                Hi, I'm
-              </span>
-              <StaggerText
-                text="Harshwardhan"
-                className="glow-text justify-center"
-                delay={0.5}
-              />
-            </h1>
-          </div>
-
-          <div className="text-xl md:text-4xl font-source-sans font-medium text-muted mb-6 h-8 md:h-12 flex items-center justify-center">
-            <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent transition-all duration-500">
-              {roles[currentRole]}
-            </span>
-          </div>
-
-          <p className="text-base md:text-xl text-muted mb-8 max-w-3xl mx-auto leading-relaxed font-source-sans">
-            Transforming ideas into scalable digital solutions. Specializing in modern web development,
-            clean architecture, and delivering exceptional user experiences that drive business results.
-          </p>
-
-          <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto">
-            {[
-              { number: "15+", label: "Projects Delivered", icon: <Code className="w-5 h-5" /> },
-              { number: "2+", label: "Years Experience", icon: <Zap className="w-5 h-5" /> },
-              { number: "20+", label: "Technologies", icon: <Star className="w-5 h-5" /> },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="card-hover bg-card/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-border/50"
-              >
-                <div className="flex items-center justify-center gap-2 text-secondary mb-2">
-                  {stat.icon}
-                  <span className="text-xl md:text-2xl font-bold font-playfair">{stat.number}</span>
-                </div>
-                <div className="text-sm md:text-base text-muted font-source-sans">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8">
-            <a
-              href="#contact"
-              className="btn-dynamic bg-gradient-to-r from-secondary to-accent text-secondary-foreground font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-lg shadow-xl"
-            >
-              Let's Work Together
-            </a>
-            <a
-              href="/resume.pdf"
-              download
-              className="btn-dynamic flex items-center justify-center gap-2 sm:gap-3 border-2 border-secondary text-secondary hover:bg-secondary/10 font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-lg"
-            >
-              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-              Download Resume
-            </a>
-          </div>
-
-          <div className="flex justify-center gap-3 sm:gap-4 mb-12 flex-wrap">
-            {[
-              {
-                href: "https://github.com/harshvortex",
-                icon: Github,
-                label: "GitHub",
-                color: "hover:bg-gray-800 hover:text-white"
-              },
-              {
-                href: "https://linkedin.com/in/harshvortex",
-                icon: Linkedin,
-                label: "LinkedIn",
-                color: "hover:bg-blue-600 hover:text-white",
-                highlight: true
-              },
-              {
-                href: "mailto:harshvortex@gmail.com",
-                icon: Mail,
-                label: "Email",
-                color: "hover:bg-red-500 hover:text-white"
-              },
-              {
-                href: "https://leetcode.com/harshvortex",
-                icon: Code,
-                label: "LeetCode",
-                custom: true,
-                color: "hover:bg-gradient-to-r hover:from-yellow-500 hover:to-orange-500 hover:text-white",
-                highlight: true
-              },
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`card-hover bg-card/90 backdrop-blur-sm rounded-2xl p-4 sm:p-5 shadow-lg border-2 ${social.highlight ? "border-secondary/50 hover:border-secondary" : "border-border/50"
-                  } group transition-all duration-300 ${social.color} ${social.highlight ? "ring-2 ring-secondary/20 hover:ring-secondary/50" : ""
-                  }`}
-                aria-label={social.label}
-              >
-                {social.custom ? (
-                  <span className="text-sm sm:text-base font-bold text-muted group-hover:text-white transition-colors duration-300">
-                    LC
-                  </span>
-                ) : (
-                  <social.icon className="w-6 h-6 sm:w-7 sm:h-7 text-muted group-hover:text-white transition-all duration-300 group-hover:scale-110" />
-                )}
-              </a>
-            ))}
-          </div>
-
-          <div
-            className="animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
-            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            <div className="bg-secondary/20 rounded-full p-3 inline-block">
-              <ChevronDown className="w-6 h-6 text-secondary" />
-            </div>
-          </div>
-        </div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Animated particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, Math.random() * window.innerHeight],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
-    </AnimatedSection>
+
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Terminal-style header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 border border-primary/20 backdrop-blur-sm">
+            <Terminal className="w-4 h-4 text-primary" />
+            <span className="text-sm font-mono text-muted-foreground">~/portfolio</span>
+            <span className="w-2 h-4 bg-primary animate-pulse" />
+          </div>
+        </motion.div>
+
+        {/* Main heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
+        >
+          <span className="text-foreground">Hi, I'm </span>
+          <span className="gradient-text">Harshwardhan</span>
+        </motion.h1>
+
+        {/* Typing effect */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="h-16 sm:h-20 flex items-center justify-center mb-8"
+        >
+          <span className="text-2xl sm:text-3xl md:text-4xl font-mono text-primary">
+            {displayText}
+            <span className="inline-block w-1 h-8 sm:h-10 bg-primary ml-1 animate-pulse" />
+          </span>
+        </motion.div>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed px-4"
+        >
+          Transforming ideas into scalable digital solutions. Specializing in modern web development,
+          clean architecture, and delivering exceptional user experiences.
+        </motion.p>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 max-w-4xl mx-auto"
+        >
+          {[
+            { icon: Code2, value: "15+", label: "Projects" },
+            { icon: Cpu, value: "2+", label: "Years Exp" },
+            { icon: Zap, value: "20+", label: "Technologies" },
+            { icon: Terminal, value: "100%", label: "Dedication" },
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))" }}
+              className="p-4 sm:p-6 rounded-lg bg-card/30 border border-border backdrop-blur-sm transition-colors"
+            >
+              <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2" />
+              <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <motion.a
+            href="#projects"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+          >
+            View Projects
+          </motion.a>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-8 py-4 bg-card border border-primary/30 text-foreground rounded-lg font-semibold hover:bg-card/80 transition-colors"
+          >
+            Get In Touch
+          </motion.a>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-primary/30 rounded-full flex items-start justify-center p-2"
+          >
+            <motion.div className="w-1 h-2 bg-primary rounded-full" />
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
   )
 }

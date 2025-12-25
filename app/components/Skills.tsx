@@ -1,93 +1,140 @@
-import { Code, Database, Wrench, BookOpen } from "lucide-react"
-import AnimatedSection from "./AnimatedSection"
+"use client"
 
-const skillCategories = [
+import { motion } from "framer-motion"
+import { Code2, Database, Globe, Server, Smartphone, Palette } from "lucide-react"
+
+const skills = [
   {
-    title: "Frontend",
-    icon: <Code className="w-5 h-5" />,
-    skills: ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS"],
-    color: "from-blue-500 to-purple-500",
+    category: "Frontend",
+    icon: Globe,
+    color: "from-blue-500 to-cyan-500",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
   },
   {
-    title: "Backend",
-    icon: <Database className="w-5 h-5" />,
-    skills: ["Python", "Node.js", "Express.js", "MongoDB"],
-    color: "from-green-500 to-blue-500",
+    category: "Backend",
+    icon: Server,
+    color: "from-green-500 to-emerald-500",
+    items: ["Node.js", "Express", "Python", "Django", "REST APIs"]
   },
   {
-    title: "Tools",
-    icon: <Wrench className="w-5 h-5" />,
-    skills: ["Git", "VS Code", "Figma", "Vercel"],
+    category: "Database",
+    icon: Database,
     color: "from-purple-500 to-pink-500",
+    items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase"]
   },
   {
-    title: "Learning",
-    icon: <BookOpen className="w-5 h-5" />,
-    skills: ["TypeScript", "Next.js", "PostgreSQL", "Docker"],
+    category: "Mobile",
+    icon: Smartphone,
     color: "from-orange-500 to-red-500",
+    items: ["React Native", "PWA", "Responsive Design", "Mobile-First"]
   },
+  {
+    category: "Tools & Others",
+    icon: Code2,
+    color: "from-yellow-500 to-amber-500",
+    items: ["Git", "Docker", "AWS", "Vercel", "CI/CD"]
+  },
+  {
+    category: "Design",
+    icon: Palette,
+    color: "from-pink-500 to-rose-500",
+    items: ["Figma", "UI/UX", "Responsive Design", "Accessibility"]
+  }
 ]
 
 export default function Skills() {
   return (
-    <AnimatedSection id="skills" className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3">
-              Technical{" "}
-              <span className="bg-gradient-to-r from-green-500 to-blue-600 dark:from-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
-                Skills
-              </span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Comprehensive technology stack for building modern, scalable applications
-            </p>
+    <section id="skills" className="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 border border-primary/20 backdrop-blur-sm mb-4">
+            <Code2 className="w-4 h-4 text-primary" />
+            <span className="text-sm font-mono text-muted-foreground">Technical Arsenal</span>
           </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            <span className="gradient-text">Skills & Technologies</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A comprehensive toolkit for building modern, scalable applications
+          </p>
+        </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skillCategories.map((category, index) => (
-              <div
-                key={index}
-                className="bg-black/20 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-3 bg-gradient-to-r ${category.color} rounded-lg text-white`}>{category.icon}</div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white">{category.title}</h3>
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group relative p-6 rounded-xl bg-card/30 border border-border backdrop-blur-sm hover:border-primary/50 transition-all duration-300"
+            >
+              {/* Gradient overlay on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`} />
+
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${skill.color} mb-4`}>
+                  <skill.icon className="w-6 h-6 text-white" />
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${category.title === "Learning"
-                        ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300"
-                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
-                        }`}
+
+                {/* Category */}
+                <h3 className="text-xl font-bold mb-4 text-foreground">
+                  {skill.category}
+                </h3>
+
+                {/* Skills list */}
+                <div className="space-y-2">
+                  {skill.items.map((item, i) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + i * 0.05 }}
+                      className="flex items-center gap-2"
                     >
-                      {skill}
-                    </span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                        {item}
+                      </span>
+                    </motion.div>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Professional Note */}
-          <div className="mt-8 text-center">
-            <div className="bg-gradient-to-r from-green-100 to-blue-100 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6">
-              <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-2">
-                <span className="font-semibold">Continuous Growth:</span> Actively expanding expertise through hands-on projects,
-                industry best practices, and emerging technologies to deliver cutting-edge solutions.
-              </p>
-              <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
-                Committed to staying current with the latest frameworks, tools, and methodologies in software development.
-              </p>
-            </div>
-          </div>
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-muted-foreground mb-6">
+            Always learning and exploring new technologies
+          </p>
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-card border border-primary/30">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-mono text-foreground">Currently exploring: AI/ML & Web3</span>
+          </div>
+        </motion.div>
       </div>
-    </AnimatedSection>
+    </section>
   )
 }

@@ -1,32 +1,33 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, Source_Sans_3 } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "./components/ThemeProvider"
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-inter",
   display: "swap",
 })
 
-const sourceSans = Source_Sans_3({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-source-sans",
+  variable: "--font-mono",
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Harshwardhan - Full-Stack Developer | Professional Portfolio",
+  title: "Harshwardhan - Full-Stack Developer | Modern Portfolio",
   description:
-    "Professional portfolio of Harshwardhan - Full-Stack Developer specializing in React, Next.js, Python, and modern web technologies. Delivering scalable solutions and exceptional user experiences.",
-  keywords: "Full-Stack Developer, React Developer, Next.js Developer, Web Development, Python Developer, Software Engineer, Frontend Developer, Backend Developer, Portfolio",
+    "Professional portfolio of Harshwardhan - Full-Stack Developer specializing in React, Next.js, Python, and modern web technologies. Building scalable, high-performance applications.",
+  keywords: "Full-Stack Developer, React, Next.js, TypeScript, Python, Web Development, Software Engineer, Portfolio",
   authors: [{ name: "Harshwardhan" }],
   openGraph: {
     title: "Harshwardhan - Full-Stack Developer",
-    description: "Professional portfolio showcasing expertise in modern web development, full-stack solutions, and delivering high-quality software applications.",
+    description: "Building modern, scalable web applications with cutting-edge technologies",
     type: "website",
   },
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 }
 
 export default function RootLayout({
@@ -35,18 +36,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${sourceSans.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const savedTheme = localStorage.getItem('theme') || 'purple';
-                document.documentElement.setAttribute('data-theme', savedTheme);
-              } catch (_) {}
-            `,
-          }}
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>{children}</ThemeProvider>
