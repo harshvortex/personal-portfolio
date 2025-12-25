@@ -1,0 +1,493 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Hide scrollbars, let R3F handle it */
+  background-color: #050505;
+}
+
+/* Purple Theme (Default) */
+@layer base {
+  :root {
+    --background: 260 50% 5%;
+    --foreground: 210 40% 98%;
+    --card: 260 50% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 260 50% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 260 90% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 290 90% 60%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 260 30% 20%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 320 90% 60%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 260 90% 60%;
+    --chart-1: 260 90% 60%;
+    --chart-2: 290 90% 60%;
+    --chart-3: 320 90% 60%;
+    --chart-4: 230 90% 60%;
+    --chart-5: 200 90% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+.dark {
+  --background: 260 50% 5%;
+  --foreground: 210 40% 98%;
+  --card: 260 50% 10%;
+  --card-foreground: 210 40% 98%;
+  --popover: 260 50% 10%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 260 90% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 290 90% 60%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 260 30% 20%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 320 90% 60%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 260 30% 20%;
+  --input: 260 30% 20%;
+  --ring: 260 90% 60%;
+  --chart-1: 260 90% 60%;
+  --chart-2: 290 90% 60%;
+  --chart-3: 320 90% 60%;
+  --chart-4: 230 90% 60%;
+  --chart-5: 200 90% 60%;
+}
+
+/* Blue Theme */
+[data-theme="blue"] {
+  --background: #0a1628;
+  --foreground: #f1f5f9;
+  --card: #152238;
+  --card-foreground: #f1f5f9;
+  --popover: #152238;
+  --popover-foreground: #f1f5f9;
+  --primary: #f1f5f9;
+  --primary-foreground: #0a1628;
+  --secondary: #3b82f6;
+  --secondary-foreground: #ffffff;
+  --muted: #64748b;
+  --muted-foreground: #94a3b8;
+  --accent: #60a5fa;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #1e3a5f;
+  --input: #1e293b;
+  --ring: rgba(59, 130, 246, 0.5);
+}
+
+/* Added dynamic animations and effects */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes pulse-glow-blue {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+[data-theme="blue"] .animate-pulse-glow {
+  animation: pulse-glow-blue 2s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-200px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Dynamic background with animated gradient */
+.dynamic-bg {
+  background: linear-gradient(-45deg, #0f0b1e, #1a1625, #2d1b3d, #3d2a4d);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+[data-theme="blue"] .dynamic-bg {
+  background: linear-gradient(-45deg, #0a1628, #152238, #1e3a5f, #2563eb);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Interactive particle effects */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(139, 92, 246, 0.6);
+  border-radius: 50%;
+  animation: particle-float 6s linear infinite;
+}
+
+.particle:nth-child(2n) {
+  animation-delay: -2s;
+  background: rgba(168, 85, 247, 0.4);
+}
+
+.particle:nth-child(3n) {
+  animation-delay: -4s;
+  background: rgba(139, 92, 246, 0.8);
+}
+
+[data-theme="blue"] .particle {
+  background: rgba(59, 130, 246, 0.6);
+}
+
+[data-theme="blue"] .particle:nth-child(2n) {
+  background: rgba(96, 165, 250, 0.4);
+}
+
+[data-theme="blue"] .particle:nth-child(3n) {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.card-hover:hover::before {
+  left: 100%;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="blue"] .card-hover:hover {
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="blue"] .card-hover::before {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+}
+
+/* Floating animation for hero elements */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-animation:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.float-animation:nth-child(3n) {
+  animation-delay: -4s;
+}
+
+/* Glowing text effect */
+.glow-text {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7, #c084fc);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+[data-theme="blue"] .glow-text {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Interactive button effects */
+.btn-dynamic {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-dynamic::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-dynamic:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-dynamic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}
+
+[data-theme="blue"] .btn-dynamic:hover {
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Smooth scroll with enhanced behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced scrollbar design */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--secondary), var(--accent));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Enhanced mobile-first responsive optimizations for all screen sizes */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  /* Optimize touch targets for mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+  }
+
+  /* Better spacing for small screens */
+  section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Added tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    max-width: 85%;
+  }
+
+  button,
+  a {
+    min-height: 48px;
+  }
+}
+
+/* Added large screen optimizations */
+@media (min-width: 1025px) {
+  .card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+  }
+
+  button:hover,
+  a:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Enhanced focus states for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Loading and transition states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced gradient text for theme variants */
+[data-theme="blue"] .glow-text {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced section backgrounds */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  opacity: 0.3;
+}
+
+/* Better link hover effects */
+a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced input focus states */
+input:focus,
+textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
