@@ -5,40 +5,40 @@ import { Code2, Database, Globe, Server, Smartphone, Palette } from "lucide-reac
 
 const skills = [
   {
-    category: "Frontend",
-    icon: Globe,
-    color: "from-blue-500 to-cyan-500",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
-  },
-  {
-    category: "Backend",
-    icon: Server,
-    color: "from-green-500 to-emerald-500",
-    items: ["Node.js", "Express", "Python", "Django", "REST APIs"]
-  },
-  {
-    category: "Database",
-    icon: Database,
-    color: "from-purple-500 to-pink-500",
-    items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase"]
-  },
-  {
-    category: "Mobile",
-    icon: Smartphone,
-    color: "from-orange-500 to-red-500",
-    items: ["React Native", "PWA", "Responsive Design", "Mobile-First"]
-  },
-  {
-    category: "Tools & Others",
+    category: "Python & AI/ML",
     icon: Code2,
-    color: "from-yellow-500 to-amber-500",
-    items: ["Git", "Docker", "AWS", "Vercel", "CI/CD"]
+    color: "from-blue-500 to-cyan-500",
+    items: ["Python", "TensorFlow", "PyTorch", "Machine Learning", "Data Science"]
   },
   {
-    category: "Design",
+    category: "Frontend & Web",
+    icon: Globe,
+    color: "from-green-500 to-emerald-500",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript"]
+  },
+  {
+    category: "Mobile Development",
+    icon: Smartphone,
+    color: "from-purple-500 to-pink-500",
+    items: ["Flutter", "Dart", "Kotlin", "Android", "React Native"]
+  },
+  {
+    category: "Backend & APIs",
+    icon: Server,
+    color: "from-orange-500 to-red-500",
+    items: ["Node.js", "Express", "Flask", "REST APIs", "Firebase"]
+  },
+  {
+    category: "Database & Storage",
+    icon: Database,
+    color: "from-yellow-500 to-amber-500",
+    items: ["MongoDB", "Firebase", "PostgreSQL", "MySQL", "Redis"]
+  },
+  {
+    category: "DevOps & Tools",
     icon: Palette,
     color: "from-pink-500 to-rose-500",
-    items: ["Figma", "UI/UX", "Responsive Design", "Accessibility"]
+    items: ["Git", "Docker", "AWS", "CI/CD", "Version Control"]
   }
 ]
 
@@ -131,7 +131,7 @@ export default function Skills() {
           </p>
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-card border border-primary/30">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-mono text-foreground">Currently exploring: AI/ML & Web3</span>
+            <span className="text-sm font-mono text-foreground">Currently exploring: Advanced AI/ML & Cloud Architecture</span>
           </div>
         </motion.div>
       </div>

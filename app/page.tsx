@@ -10,6 +10,11 @@ const Hero = lazy(() => import("./components/Hero"))
 const About = lazy(() => import("./components/About"))
 const Skills = lazy(() => import("./components/Skills"))
 const Projects = lazy(() => import("./components/Projects"))
+const GitHubStats = lazy(() => import("./components/GitHubStats"))
+const OpenSourceContributions = lazy(() => import("./components/OpenSourceContributions"))
+const BlogSection = lazy(() => import("./components/BlogSection"))
+const CertificationsSection = lazy(() => import("./components/CertificationsSection"))
+const TestimonialsSection = lazy(() => import("./components/TestimonialsSection"))
 const Contact = lazy(() => import("./components/Contact"))
 const Footer = lazy(() => import("./components/Footer"))
 
@@ -71,6 +76,26 @@ export default function Home() {
 
         <Suspense fallback={<div className="h-96" />}>
           <Projects />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96" />}>
+          <GitHubStats />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96" />}>
+          <OpenSourceContributions />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96" />}>
+          <BlogSection />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96" />}>
+          <CertificationsSection />
+        </Suspense>
+
+        <Suspense fallback={<div className="h-96" />}>
+          <TestimonialsSection />
         </Suspense>
 
         <Suspense fallback={<div className="h-96" />}>

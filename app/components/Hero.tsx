@@ -6,10 +6,10 @@ import Image from "next/image"
 import { Terminal, Code2, Cpu, Zap, Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
 
 const typingPhrases = [
+  "AI/ML Engineer",
   "Full-Stack Developer",
-  "Problem Solver",
-  "Tech Enthusiast",
-  "Code Architect"
+  "Mobile App Developer",
+  "Open Source Contributor"
 ]
 
 export default function Hero() {
@@ -172,8 +172,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-base sm:text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl"
             >
-              Transforming ideas into scalable digital solutions. Specializing in modern web development,
-              clean architecture, and delivering exceptional user experiences.
+              Passionate about building intelligent systems and scalable applications. Expertise in Python, JavaScript/TypeScript, 
+              Kotlin, and Dart. Crafting elegant solutions from AI/ML to mobile and web development.
             </motion.p>
 
             {/* CTA Buttons */}

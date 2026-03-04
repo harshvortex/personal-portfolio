@@ -6,44 +6,44 @@ import { useRef, MouseEvent } from "react"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with real-time inventory, payment integration, and admin dashboard. Built with modern technologies for scalability.",
-    tech: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
-    featured: true,
-    gradient: "from-purple-500 to-pink-500"
-  },
-  {
-    title: "Task Management App",
-    description: "Collaborative task manager with real-time updates, drag-and-drop interface, and team collaboration features.",
-    tech: ["React", "Firebase", "Tailwind", "Framer Motion"],
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop",
-    github: "#",
+    title: "ai_engineer",
+    description: "Advanced AI/ML project exploring machine learning algorithms, neural networks, and intelligent automation solutions. Demonstrates cutting-edge AI engineering practices and implementation patterns.",
+    tech: ["Python", "TensorFlow", "PyTorch", "Machine Learning"],
+    image: "https://images.unsplash.com/photo-1677442d019cecf8f325fbeee7c7f84a8d0a0b28?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/ai_engineer",
     live: "#",
     featured: true,
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather app with geolocation, 7-day forecasts, and interactive data visualization with beautiful charts.",
-    tech: ["React", "Weather API", "Chart.js", "CSS3"],
-    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop",
-    github: "#",
+    title: "AndroIDE_pro",
+    description: "Professional Android IDE application built with Kotlin. A comprehensive development environment for Android development with advanced features and optimization.",
+    tech: ["Kotlin", "Android", "Java", "IDE"],
+    image: "https://images.unsplash.com/photo-1633356122544-f134324ef6e7?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/AndroIDE_pro",
     live: "#",
-    featured: false,
+    featured: true,
     gradient: "from-green-500 to-emerald-500"
   },
   {
-    title: "Portfolio CMS",
-    description: "Headless CMS for managing portfolio content with markdown support, media library, and real-time preview.",
-    tech: ["Next.js", "Sanity", "TypeScript", "Vercel"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    github: "#",
+    title: "Cab-Booking-App",
+    description: "Full-stack ride-sharing application built with Flutter and Dart. Seamless user experience with real-time tracking, payment integration, and dynamic pricing.",
+    tech: ["Flutter", "Dart", "Firebase", "Payment APIs"],
+    image: "https://images.unsplash.com/photo-1526881152029-0ae1e5a48fb0?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/Cab-Booking-App",
+    live: "https://codecyclon.vercel.app",
+    featured: true,
+    gradient: "from-orange-500 to-red-500"
+  },
+  {
+    title: "dynamicwebsite",
+    description: "Full-stack web application built with Python, Flask, and MongoDB. Robust backend with dynamic frontend, demonstrating scalable architecture and modern web development practices.",
+    tech: ["Python", "Flask", "MongoDB", "HTML/CSS/JS"],
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/dynamicwebsite",
     live: "#",
     featured: false,
-    gradient: "from-orange-500 to-red-500"
+    gradient: "from-purple-500 to-pink-500"
   }
 ]
 
