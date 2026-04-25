@@ -241,25 +241,40 @@ export default function Hero() {
               style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
               className="relative"
             >
+              {/* Glow effect */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-3xl opacity-50"
+              />
+
               {/* Headshot container */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                {/* Clean circular border frame */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1.5">
-                  {/* Inner background circle */}
-                  <div className="w-full h-full rounded-full bg-background overflow-hidden shadow-2xl">
-                    {/* Image container */}
-                    <Image
-                      src="/headshot.jpg"
-                      alt="Harshwardhan"
-                      fill
-                      className="object-cover"
-                      priority
-                      onError={(e) => {
-                        // Fallback to placeholder if image not found
-                        e.currentTarget.src = "/placeholder.svg?height=400&width=400"
-                      }}
-                    />
-                  </div>
+                {/* Animated border */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1"
+                >
+                  <div className="w-full h-full rounded-full bg-background" />
+                </motion.div>
+
+                {/* Image */}
+                <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                  <Image
+                    src="/headshot.jpg" // User will upload this
+                    alt="Harshwardhan"
+                    fill
+                    className="object-cover"
+                    priority
+                    onError={(e) => {
+                      // Fallback to placeholder if image not found
+                      e.currentTarget.src = "/placeholder.svg?height=400&width=400"
+                    }}
+                  />
                 </div>
 
                 {/* Floating badges */}
