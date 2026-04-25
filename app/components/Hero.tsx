@@ -253,10 +253,15 @@ export default function Hero() {
 
               {/* Headshot container */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                {/* Animated rotating border */}
+                {/* Animated gradient border with elegant shine effect */}
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  animate={{
+                    backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  style={{
+                    backgroundSize: "200% 200%",
+                  }}
                   className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1.5"
                 >
                   {/* Inner background circle */}
