@@ -253,29 +253,30 @@ export default function Hero() {
 
               {/* Headshot container */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                {/* Animated border */}
+                {/* Animated rotating border */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1"
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1.5"
                 >
-                  <div className="w-full h-full rounded-full bg-background" />
+                  {/* Inner background circle */}
+                  <div className="w-full h-full rounded-full bg-background flex items-center justify-center p-1">
+                    {/* Image container */}
+                    <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl">
+                      <Image
+                        src="/headshot.jpg"
+                        alt="Harshwardhan"
+                        fill
+                        className="object-cover"
+                        priority
+                        onError={(e) => {
+                          // Fallback to placeholder if image not found
+                          e.currentTarget.src = "/placeholder.svg?height=400&width=400"
+                        }}
+                      />
+                    </div>
+                  </div>
                 </motion.div>
-
-                {/* Image */}
-                <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-background shadow-2xl">
-                  <Image
-                    src="/headshot.jpg" // User will upload this
-                    alt="Harshwardhan"
-                    fill
-                    className="object-cover"
-                    priority
-                    onError={(e) => {
-                      // Fallback to placeholder if image not found
-                      e.currentTarget.src = "/placeholder.svg?height=400&width=400"
-                    }}
-                  />
-                </div>
 
                 {/* Floating badges */}
                 {[
