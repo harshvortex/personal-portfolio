@@ -3,7 +3,14 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Terminal, Github, Linkedin, Mail, AtSign } from "lucide-react"
+import { Menu, X, Terminal, Github, Linkedin, Mail } from "lucide-react"
+
+// X icon SVG component
+const XIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.657-5.856 6.657H2.306l7.73-8.835L1.75 2.25h6.969l4.613 6.231 5.206-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -17,7 +24,7 @@ const socialLinks = [
   { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
-  { icon: AtSign, href: "https://x.com/harshvortex", label: "X (Twitter)" },
+  { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
 ]
 
 export default function Header() {
