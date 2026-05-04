@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import Image from "next/image"
-import { Terminal, Code2, Cpu, Zap, Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
+import { Terminal, Code2, Cpu, Zap, Download, Sparkles } from "lucide-react"
 
 const typingPhrases = [
   "Full-Stack Developer",
@@ -207,45 +207,18 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex justify-center"
+              className="flex justify-center w-full"
             >
               <motion.a
                 href="/resume.pdf"
                 download
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 text-foreground rounded-lg font-medium flex items-center gap-2 hover:border-primary/60 transition-all group"
+                className="px-8 py-4 bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 text-foreground rounded-lg font-semibold flex items-center gap-2 hover:border-primary/60 transition-all group"
               >
                 <Download className="w-4 h-4 group-hover:animate-bounce" />
                 Download Resume
               </motion.a>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="flex items-center gap-4"
-            >
-              {[
-                { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
-              ].map((social, i) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-3 rounded-lg bg-card/50 border border-border hover:border-primary/50 transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
-                </motion.a>
-              ))}
             </motion.div>
           </motion.div>
 

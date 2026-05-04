@@ -7,7 +7,6 @@ import LoadingSpinner from "./components/LoadingSpinner"
 // Lazy load components
 const Header = lazy(() => import("./components/Header"))
 const Hero = lazy(() => import("./components/Hero"))
-const SocialLinks = lazy(() => import("./components/SocialLinks"))
 const About = lazy(() => import("./components/About"))
 const Skills = lazy(() => import("./components/Skills"))
 const Projects = lazy(() => import("./components/Projects"))
@@ -60,10 +59,6 @@ export default function Home() {
 
         <Suspense fallback={<div className="h-screen" />}>
           <Hero />
-        </Suspense>
-
-        <Suspense fallback={<div className="h-32" />}>
-          <SocialLinks />
         </Suspense>
 
         <Suspense fallback={<div className="h-96" />}>
