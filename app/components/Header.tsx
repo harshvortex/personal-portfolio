@@ -12,14 +12,12 @@ const XIcon = () => (
   </svg>
 )
 
-// LeetCode icon SVG component - Funky Design
-const LeetCodeIcon = () => (
+// Code icon SVG component
+const CodeIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 8 Q6 3 12 3 Q18 3 21 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M5 10 L7 15 L9 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 10 L12 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M15 10 L17 15 L19 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <circle cx="12" cy="12" r="0.5" fill="currentColor"/>
+    <path d="M8 7L3 12L8 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16 7L21 12L16 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )
 
@@ -36,7 +34,7 @@ const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
   { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
-  { icon: LeetCodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
+  { icon: CodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
 ]
 
 export default function Header() {
