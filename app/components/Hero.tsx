@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import Image from "next/image"
-import { Terminal, Code2, Cpu, Zap, Github, Linkedin, Mail, Download, Sparkles, ArrowRight } from "lucide-react"
-
-// X icon SVG component
-const XIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.657-5.856 6.657H2.306l7.73-8.835L1.75 2.25h6.969l4.613 6.231 5.206-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-)
+import { Terminal, Code2, Cpu, Zap, Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
 
 const typingPhrases = [
   "Full-Stack Developer",
@@ -209,12 +202,12 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Resume & X Links */}
+            {/* Download Resume */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex flex-wrap gap-3 items-center"
+              className="flex justify-center"
             >
               <motion.a
                 href="/resume.pdf"
@@ -225,17 +218,6 @@ export default function Hero() {
               >
                 <Download className="w-4 h-4 group-hover:animate-bounce" />
                 Download Resume
-              </motion.a>
-              <motion.a
-                href="https://x.com/harshvortex"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 text-foreground rounded-lg font-medium flex items-center gap-2 hover:border-primary/60 transition-all"
-              >
-                <XIcon />
-                X Account
               </motion.a>
             </motion.div>
 

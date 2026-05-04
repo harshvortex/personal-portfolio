@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Send, CheckCircle, AlertCircle, Github, Linkedin, AtSign, Rocket } from "lucide-react"
-import Link from "next/link"
+import { Mail, Send, CheckCircle, AlertCircle, Rocket } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -163,58 +162,20 @@ export default function Contact() {
           </form>
 
           {/* Alternative contact */}
-          <div className="mt-8 pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground text-center mb-6">
-              Or connect with me on social platforms
+          <div className="mt-8 pt-8 border-t border-border text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Or email me directly:
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-              <motion.a
-                href="https://github.com/harshvortex"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
-              >
-                <Github className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">GitHub</span>
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/harshvortex"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
-              >
-                <Linkedin className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">LinkedIn</span>
-              </motion.a>
-              <motion.a
-                href="https://x.com/harshvortex"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
-              >
-                <AtSign className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">X/Twitter</span>
-              </motion.a>
-            </div>
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-3">Email me directly:</p>
-              <a
-                href="mailto:harshvortex@gmail.com"
-                className="text-primary hover:text-primary/80 transition-colors font-medium"
-              >
-                harshvortex@gmail.com
-              </a>
-              <p className="text-sm text-muted-foreground mt-4 flex items-center justify-center gap-2">
-                <Rocket className="w-4 h-4" />
-                or visit my agency: <a href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CodeCyclon</a>
-              </p>
-            </div>
+            <a
+              href="mailto:harshvortex@gmail.com"
+              className="text-primary hover:text-primary/80 transition-colors font-semibold"
+            >
+              harshvortex@gmail.com
+            </a>
+            <p className="text-sm text-muted-foreground mt-6 flex items-center justify-center gap-2">
+              <Rocket className="w-4 h-4" />
+              Also visit my agency: <a href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">CodeCyclon</a>
+            </p>
           </div>
         </motion.div>
       </div>
