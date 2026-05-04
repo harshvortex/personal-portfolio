@@ -1,11 +1,30 @@
 "use client"
 
-import { Terminal, Github, Linkedin, Mail, Heart } from "lucide-react"
+import { Terminal, Github, Linkedin, Mail, Heart, Rocket, Code2 } from "lucide-react"
+import Link from "next/link"
+
+// X icon SVG component
+const XIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.657-5.856 6.657H2.306l7.73-8.835L1.75 2.25h6.969l4.613 6.231 5.206-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
+
+// Code icon SVG component
+const CodeIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 7L3 12L8 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16 7L21 12L16 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
+  { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
+  { icon: CodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
 ]
 
 const quickLinks = [
@@ -19,6 +38,21 @@ const quickLinks = [
 export default function Footer() {
   return (
     <footer className="relative border-t border-border bg-card/30 backdrop-blur-sm">
+      {/* Agency Promotion Section */}
+      <div className="relative bg-gradient-to-r from-primary/5 via-transparent to-accent/5 py-8 border-b border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer">
+            <div className="flex items-center justify-center gap-3 group cursor-pointer">
+              <Rocket className="w-5 h-5 text-primary group-hover:scale-110 group-hover:rotate-45 transition-transform" />
+              <span className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                CodeCyclon - Your Software Agency Partner
+              </span>
+              <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">→</span>
+            </div>
+          </Link>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -79,6 +113,12 @@ export default function Footer() {
               <li>
                 <a href="https://github.com/harshvortex" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                   github.com/harshvortex
+                </a>
+              </li>
+              <li>
+                <a href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-1">
+                  <Rocket className="w-3 h-3" />
+                  CodeCyclon Agency
                 </a>
               </li>
             </ul>

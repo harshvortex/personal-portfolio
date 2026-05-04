@@ -5,6 +5,22 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Terminal, Github, Linkedin, Mail } from "lucide-react"
 
+// X icon SVG component
+const XIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.657-5.856 6.657H2.306l7.73-8.835L1.75 2.25h6.969l4.613 6.231 5.206-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
+
+// Code icon SVG component
+const CodeIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 7L3 12L8 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16 7L21 12L16 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -17,6 +33,8 @@ const socialLinks = [
   { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
+  { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
+  { icon: CodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
 ]
 
 export default function Header() {

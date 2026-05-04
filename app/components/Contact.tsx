@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Mail, Send, CheckCircle, AlertCircle, Rocket } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -162,16 +162,20 @@ export default function Contact() {
           </form>
 
           {/* Alternative contact */}
-          <div className="mt-8 pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground text-center mb-4">
-              Or reach out directly at
+          <div className="mt-8 pt-8 border-t border-border text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Or email me directly:
             </p>
             <a
               href="mailto:harshvortex@gmail.com"
-              className="block text-center text-primary hover:text-primary/80 transition-colors font-medium"
+              className="text-primary hover:text-primary/80 transition-colors font-semibold"
             >
               harshvortex@gmail.com
             </a>
+            <p className="text-sm text-muted-foreground mt-6 flex items-center justify-center gap-2">
+              <Rocket className="w-4 h-4" />
+              Also visit my agency: <a href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">CodeCyclon</a>
+            </p>
           </div>
         </motion.div>
       </div>
