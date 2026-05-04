@@ -1,13 +1,28 @@
 "use client"
 
-import { Terminal, Github, Linkedin, Mail, Heart, AtSign, Rocket } from "lucide-react"
+import { Terminal, Github, Linkedin, Mail, Heart, Rocket, Code2 } from "lucide-react"
 import Link from "next/link"
+
+// X icon SVG component
+const XIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.657-5.856 6.657H2.306l7.73-8.835L1.75 2.25h6.969l4.613 6.231 5.206-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
+
+// LeetCode icon SVG component
+const LeetCodeIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.102 17.93h2.747L14.3 3.5h-2.946l4.748 14.43zm-9.556-5.46h2.616l1.72-4.174h-2.616l-1.72 4.174zm6.588-5.46h2.616l-1.72 4.174h-2.616l1.72-4.174z"/>
+  </svg>
+)
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
-  { icon: AtSign, href: "https://x.com/harshvortex", label: "X (Twitter)" },
+  { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
+  { icon: LeetCodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
 ]
 
 const quickLinks = [

@@ -12,6 +12,13 @@ const XIcon = () => (
   </svg>
 )
 
+// LeetCode icon SVG component
+const LeetCodeIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.102 17.93h2.747L14.3 3.5h-2.946l4.748 14.43zm-9.556-5.46h2.616l1.72-4.174h-2.616l-1.72 4.174zm6.588-5.46h2.616l-1.72 4.174h-2.616l1.72-4.174z"/>
+  </svg>
+)
+
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -25,6 +32,7 @@ const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
   { icon: XIcon, href: "https://x.com/harshvortex", label: "X" },
+  { icon: LeetCodeIcon, href: "https://leetcode.com/harshvortex", label: "LeetCode" },
 ]
 
 export default function Header() {
