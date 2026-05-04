@@ -245,7 +245,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-7xl">
-        {/* Section Header with cinematic flair */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -282,7 +282,7 @@ export default function Projects() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 relative z-10"
           >
-            <span className="gradient-text">Cinematic Creations</span>
+            <span className="gradient-text">My Creations</span>
           </motion.h2>
 
           <motion.p
