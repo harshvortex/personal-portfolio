@@ -6,44 +6,44 @@ import { useRef, MouseEvent } from "react"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with real-time inventory, payment integration, and admin dashboard. Built with modern technologies for scalability.",
-    tech: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
+    title: "AI Engineer",
+    description: "Advanced AI-powered engineering tools and utilities. A Python-based project exploring machine learning and artificial intelligence applications.",
+    tech: ["Python", "AI/ML", "Engineering"],
+    image: "https://images.unsplash.com/photo-1677442d019cecf8e5004e3f392f34d77a3480fbb?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/ai_engineer",
+    live: "https://github.com/harshvortex/ai_engineer",
     featured: true,
     gradient: "from-purple-500 to-pink-500"
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task manager with real-time updates, drag-and-drop interface, and team collaboration features.",
-    tech: ["React", "Firebase", "Tailwind", "Framer Motion"],
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
+    title: "AndroIDE Pro",
+    description: "Professional Android IDE development toolkit built with Kotlin. A comprehensive IDE solution for Android development with advanced features.",
+    tech: ["Kotlin", "Android", "IDE"],
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/AndroIDE_pro",
+    live: "https://github.com/harshvortex/AndroIDE_pro",
     featured: true,
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather app with geolocation, 7-day forecasts, and interactive data visualization with beautiful charts.",
-    tech: ["React", "Weather API", "Chart.js", "CSS3"],
-    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
-    featured: false,
-    gradient: "from-green-500 to-emerald-500"
+    title: "Cab Booking App",
+    description: "Full-featured cab booking application built with Dart and Flutter. Seamless ride-sharing experience with real-time tracking and payments.",
+    tech: ["Dart", "Flutter", "Mobile"],
+    image: "https://images.unsplash.com/photo-1569163139394-de4798aa62b7?w=800&h=600&fit=crop",
+    github: "https://github.com/harshvortex/Cab-Booking-App",
+    live: "https://codecyclon.vercel.app",
+    featured: true,
+    gradient: "from-yellow-500 to-orange-500"
   },
   {
-    title: "Portfolio CMS",
-    description: "Headless CMS for managing portfolio content with markdown support, media library, and real-time preview.",
-    tech: ["Next.js", "Sanity", "TypeScript", "Vercel"],
+    title: "Dynamic Website",
+    description: "Dynamic web application with MongoDB Atlas integration and Flask backend. Deployed on Render with full database management capabilities.",
+    tech: ["Flask", "MongoDB", "Python"],
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
+    github: "https://github.com/harshvortex/dynamicwebsite",
+    live: "https://github.com/harshvortex/dynamicwebsite",
     featured: false,
-    gradient: "from-orange-500 to-red-500"
+    gradient: "from-green-500 to-emerald-500"
   }
 ]
 
@@ -76,10 +76,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 100, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -87,7 +87,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className="group relative rounded-2xl overflow-hidden bg-card/30 border border-border backdrop-blur-sm hover:border-primary/50 transition-all duration-300"
+      className="group relative rounded-2xl overflow-hidden bg-card/30 border border-border backdrop-blur-sm hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/20"
     >
       {/* Featured badge */}
       {project.featured && (
@@ -104,17 +104,26 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           alt={project.title}
           className="w-full h-full object-cover"
           loading="lazy"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.15, rotate: 1 }}
+          transition={{ duration: 0.8 }}
         />
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+        <motion.div
+          initial={{ opacity: 0.2 }}
+          whileHover={{ opacity: 0.4 }}
+          className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition-opacity`}
+        />
+        <motion.div
+          initial={{ opacity: 0.6 }}
+          whileHover={{ opacity: 0.8 }}
+          className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent"
+        />
 
         {/* Hover overlay with links */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          className="absolute inset-0 flex items-center justify-center gap-4 bg-background/80 backdrop-blur-sm transition-opacity"
+          initial={{ opacity: 0, y: 20 }}
+          whileHover={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-0 flex items-center justify-center gap-4 bg-background/85 backdrop-blur-md transition-all"
         >
           <motion.a
             href={project.github}

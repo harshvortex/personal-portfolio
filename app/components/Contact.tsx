@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Mail, Send, CheckCircle, AlertCircle, Github, Linkedin, AtSign, Rocket } from "lucide-react"
+import Link from "next/link"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -163,15 +164,57 @@ export default function Contact() {
 
           {/* Alternative contact */}
           <div className="mt-8 pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground text-center mb-4">
-              Or reach out directly at
+            <p className="text-sm text-muted-foreground text-center mb-6">
+              Or connect with me on social platforms
             </p>
-            <a
-              href="mailto:harshvortex@gmail.com"
-              className="block text-center text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              harshvortex@gmail.com
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+              <motion.a
+                href="https://github.com/harshvortex"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <Github className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">GitHub</span>
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/harshvortex"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <Linkedin className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">LinkedIn</span>
+              </motion.a>
+              <motion.a
+                href="https://x.com/harshvortex"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <AtSign className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">X/Twitter</span>
+              </motion.a>
+            </div>
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-3">Email me directly:</p>
+              <a
+                href="mailto:harshvortex@gmail.com"
+                className="text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                harshvortex@gmail.com
+              </a>
+              <p className="text-sm text-muted-foreground mt-4 flex items-center justify-center gap-2">
+                <Rocket className="w-4 h-4" />
+                or visit my agency: <a href="https://codecyclon.vercel.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CodeCyclon</a>
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

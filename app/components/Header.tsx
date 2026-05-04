@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Terminal, Github, Linkedin, Mail } from "lucide-react"
+import { Menu, X, Terminal, Github, Linkedin, Mail, AtSign } from "lucide-react"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -17,6 +17,7 @@ const socialLinks = [
   { icon: Github, href: "https://github.com/harshvortex", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/harshvortex", label: "LinkedIn" },
   { icon: Mail, href: "mailto:harshvortex@gmail.com", label: "Email" },
+  { icon: AtSign, href: "https://x.com/harshvortex", label: "X (Twitter)" },
 ]
 
 export default function Header() {

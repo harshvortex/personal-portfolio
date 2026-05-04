@@ -1,44 +1,50 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code2, Database, Globe, Server, Smartphone, Palette } from "lucide-react"
+import { Code2, Database, Globe, Server, Smartphone, Palette, Zap, GitBranch } from "lucide-react"
 
 const skills = [
   {
     category: "Frontend",
     icon: Globe,
     color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-500/10",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
   },
   {
     category: "Backend",
     icon: Server,
     color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-500/10",
     items: ["Node.js", "Express", "Python", "Django", "REST APIs"]
   },
   {
     category: "Database",
     icon: Database,
     color: "from-purple-500 to-pink-500",
+    bgColor: "bg-purple-500/10",
     items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase"]
   },
   {
     category: "Mobile",
     icon: Smartphone,
     color: "from-orange-500 to-red-500",
-    items: ["React Native", "PWA", "Responsive Design", "Mobile-First"]
+    bgColor: "bg-orange-500/10",
+    items: ["React Native", "Flutter", "Dart", "PWA", "Mobile-First"]
   },
   {
-    category: "Tools & Others",
-    icon: Code2,
+    category: "DevOps & Tools",
+    icon: GitBranch,
     color: "from-yellow-500 to-amber-500",
-    items: ["Git", "Docker", "AWS", "Vercel", "CI/CD"]
+    bgColor: "bg-yellow-500/10",
+    items: ["Git", "Docker", "Vercel", "AWS", "CI/CD"]
   },
   {
-    category: "Design",
+    category: "Design & UX",
     icon: Palette,
     color: "from-pink-500 to-rose-500",
-    items: ["Figma", "UI/UX", "Responsive Design", "Accessibility"]
+    bgColor: "bg-pink-500/10",
+    items: ["Figma", "UI/UX Design", "Responsive Design", "Accessibility"]
   }
 ]
 
@@ -66,45 +72,62 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skills Grid - Bento Style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group relative p-6 rounded-xl bg-card/30 border border-border backdrop-blur-sm hover:border-primary/50 transition-all duration-300"
+              transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className={`group relative p-6 rounded-2xl ${skill.bgColor} border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden`}
             >
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`} />
+              {/* Animated gradient background */}
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 0.1 }}
+              />
+
+              {/* Blur orb effect */}
+              <motion.div
+                className={`absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br ${skill.color} rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+              />
 
               <div className="relative z-10">
-                {/* Icon */}
-                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${skill.color} mb-4`}>
+                {/* Icon with animation */}
+                <motion.div
+                  initial={{ scale: 1, rotate: 0 }}
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  transition={{ duration: 0.3 }}
+                  className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${skill.color} mb-4 shadow-lg shadow-current/20`}
+                >
                   <skill.icon className="w-6 h-6 text-white" />
-                </div>
+                </motion.div>
 
                 {/* Category */}
-                <h3 className="text-xl font-bold mb-4 text-foreground">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
                   {skill.category}
                 </h3>
 
-                {/* Skills list */}
+                {/* Skills list with stagger animation */}
                 <div className="space-y-2">
                   {skill.items.map((item, i) => (
                     <motion.div
                       key={item}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -15 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + i * 0.05 }}
-                      className="flex items-center gap-2"
+                      transition={{ delay: index * 0.12 + i * 0.08, ease: "easeOut" }}
+                      className="flex items-center gap-3 group/item"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                      <motion.div
+                        className="w-2 h-2 rounded-full bg-primary"
+                        whileHover={{ scale: 1.5 }}
+                      />
+                      <span className="text-sm text-muted-foreground group-hover/item:text-foreground group-hover/item:font-medium transition-all">
                         {item}
                       </span>
                     </motion.div>
@@ -112,8 +135,13 @@ export default function Skills() {
                 </div>
               </div>
 
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Shine effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.8 }}
+              />
             </motion.div>
           ))}
         </div>
